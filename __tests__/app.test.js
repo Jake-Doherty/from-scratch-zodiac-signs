@@ -31,3 +31,17 @@ describe('zodiac routes', () => {
     expect(res.body).toEqual(aquarius);
   });
 });
+
+describe('horoscope routes', () => {
+  it('/horoscopes/:sign should return a horoscope for the given sign', async () => {
+    const res = await request(app).get('/horoscopes/virgo');
+
+    const virgo = {
+      id: '12',
+      name: 'virgo',
+      horoscope:
+        'Distractions will find you easily this morning, darling Virgo, as the Aquarius moon forms a harsh t-square with the nodes of fate. Do your best to stay aligned with your tasks and typical routine, or you could become overwhelmed by stress later. Watch out for disorganization later in the afternoon when Luna squares off with wildcard Uranus, which could cause you to get lost in a daydream or two. If you can swing a little reprieve from your work responsibilities, this might be a good time to get in a little walk or meditation session before clocking out for the day.',
+    };
+    expect(res.body).toEqual(virgo);
+  });
+});
